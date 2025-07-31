@@ -22,7 +22,7 @@ public class Question {
 	private String opt3;
 	private String opt4;
 	
-	private String correct_Opt;
+	private String correctOpt;
 	@ManyToOne
 	@JoinColumn(name="techId")
 	private Techno techId;

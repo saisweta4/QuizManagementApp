@@ -41,7 +41,7 @@
 <body>
 
 <div class="exam-container">
-    <h2 class="text-center mb-4">Online Quize Examination</h2>
+    <h2 class="text-center mb-4">Online Quiz Examination</h2>
 
     <form action="checkAns" method="post">
         <ol type="1">
@@ -85,6 +85,8 @@
         <!-- Submit Button -->
         <button type="submit" class="btn btn-success submit-btn">Submit</button>
     </form>
+<a href="AllTechName" class="btn btn-danger submit-btn">Go Back</a>
+    
 </div>
 
 <!-- Bootstrap JS -->

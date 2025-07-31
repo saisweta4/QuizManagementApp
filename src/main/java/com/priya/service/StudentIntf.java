@@ -10,8 +10,8 @@ import com.priya.domain.User;
 public interface StudentIntf {
 	
 	public List<Techno> getAllTechno();
-	//public List<Question> getQuestion(String name);
+	public List<Question> getQuestion(String name);
 	public int calculateScore(List<Integer> questionIds, List<String> selectedAnswers);
 	public List<Question> getAllQuestion();
-	public Integer getTotalQns();
+	public Integer getTotalQns(String techname);
 }

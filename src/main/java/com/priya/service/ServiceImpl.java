@@ -47,7 +47,7 @@ public class ServiceImpl implements ServiceIntf{
 		System.out.println(role);
 		BeanUtils.copyProperties(userDto, dto);
 		
-		dto.setRole_Entity(role);
+		dto.setRoleEntity(role);
 		User user=userRepo.save(dto);
 		
 		
@@ -75,7 +75,7 @@ public class ServiceImpl implements ServiceIntf{
 		System.out.println(roleEntity);
 		BeanUtils.copyProperties(userDto, dto);
 		
-		dto.setRole_Entity(roleEntity);
+		dto.setRoleEntity(roleEntity);
 		User user=userRepo.save(dto);
 		
 		
@@ -152,13 +152,13 @@ public class ServiceImpl implements ServiceIntf{
 		{
 			UserDto userDto=new UserDto();
 			BeanUtils.copyProperties(user, userDto);
-			roleObject=user.getRole_Entity();
+			roleObject=user.getRoleEntity();
 			
 			RoleDto roleDto=new RoleDto();
 			
 			BeanUtils.copyProperties(roleObject, roleDto);
 			
-			userDto.setRole_Entity(roleDto);
+			userDto.setRoleEntity(roleDto);
 			studentDtoList.add(userDto);
 		}
 		
@@ -171,7 +171,7 @@ public class ServiceImpl implements ServiceIntf{
 	public String removeOneData(Long id)
 	{
 		User user=userRepo.findById(id).get();
-		Role role=user.getRole_Entity();
+		Role role=user.getRoleEntity();
 		String name=role.getName();
 		//System.out.println(name+".............."+user+""+role);
 		userRepo.deleteById(id);
@@ -194,9 +194,9 @@ public class ServiceImpl implements ServiceIntf{
 		
 		RoleDto roleD=new RoleDto();
 		roleD.setName(role.getName());
-		roleD.setRole_id(role.getRole_id());
+		roleD.setRoleId(role.getRoleId());
 		
-		userDto.setRole_Entity(roleD);
+		userDto.setRoleEntity(roleD);
 		
 		BeanUtils.copyProperties(oneUser, userDto);
 		return userDto;
@@ -208,7 +208,7 @@ public class ServiceImpl implements ServiceIntf{
 		BeanUtils.copyProperties(userDto, user);
 		
 		Role role=roleRepo.findByName(userDto.getRole());
-		user.setRole_Entity(role);
+		user.setRoleEntity(role);
 		
 		
 		//User oneUser=userRepo.findById(user.getId()).get();
@@ -220,14 +220,16 @@ public class ServiceImpl implements ServiceIntf{
 	
 	public Integer countStudent()
 	{
-		Integer countStd=userRepo.countUser(1);
+		// FIX: Pass '1L' instead of '1' to match the expected Long type.
+		Integer countStd=userRepo.countUser(1L);
 		
 		return countStd;
 	}
 	
 	public Integer countFaculty()
 	{
-		Integer countStaff=userRepo.countUser(2);
+		// FIX: Pass '2L' instead of '2' to match the expected Long type.
+		Integer countStaff=userRepo.countUser(2L);
 		
 		return countStaff;
 	}

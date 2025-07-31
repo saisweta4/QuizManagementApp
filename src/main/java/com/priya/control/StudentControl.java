@@ -22,7 +22,9 @@ public class StudentControl {
 	@Autowired
 	private StudentIntf stdService;
 	
-	/*
+	String techName;
+	
+	
 	@GetMapping("/AllTechName")
 	public String getQuestion(Model m)
 	{
@@ -36,14 +38,15 @@ public class StudentControl {
 	@GetMapping("/getQuestion")
 	public String getQuestionSpecific(@RequestParam("name")String name,Model m)
 	{
+		techName=name;
 		List<Question> question = stdService.getQuestion(name);
 		//System.out.println(question+".........."+name);
 		m.addAttribute("Questions", question);
 		return "QuestionsQuize";
 	}
 	
-	*/
 	
+	/*
 	@GetMapping("/getQuestion")
 	public String allQuestion(Model m)
 	{
@@ -53,7 +56,7 @@ public class StudentControl {
 	}
 	
 	
-	/*
+	
 	 * @PostMapping("/checkAns") public String checkAnswer(@RequestParam
 	 * Map<String,String> question) {
 	 * question.forEach((key,value)->System.out.println("key:"+key+"value:"+value));
@@ -81,7 +84,7 @@ public class StudentControl {
 	    
 	    
 	    //get the no of qn from db
-	    int totalQuestions=stdService.getTotalQns();
+	    int totalQuestions=stdService.getTotalQns(techName);
 	    
 	    model.addAttribute("score", score);
 	    

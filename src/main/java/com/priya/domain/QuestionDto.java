@@ -13,7 +13,7 @@ public class QuestionDto {
 	private String opt3;
 	private String opt4;
 	
-	private String correct_Opt;
+	private String correctOpt;
 
 	private String technoName;
 	//private Techno techId;

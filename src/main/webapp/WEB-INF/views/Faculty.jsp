@@ -1,80 +1,94 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <% if("Faculty".equals(session.getAttribute("role")) ){  }
-else {response.sendRedirect("login");}%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+    // Security check to ensure only logged-in faculty can see this page.
+    if (!"Faculty".equals(session.getAttribute("role"))) {
+        response.sendRedirect("login");
+        return; // Stop further processing of the page
+    }
+%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F5F5DC; font-size: large; height: 60px;">
-    <a class="navbar-brand" href="Faculty">Faculty-DashBoard</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-         <!--     <li class="nav-item active">
-                <a class="nav-link" href="AllFaculty?name=faculty">All Faculty </a>
-            </li>    -->
-            <li class="nav-item">
-                <a class="nav-link" href="AddQuestion">Add Question</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="AllQuestion">All Questions</a>
-            </li>
-            
-            <!--  <li class="nav-item">
-                <a class="nav-link" href="AddTech">Add Technology</a>
-            </li> -->
-            
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
-            </li>
-        </ul>
+<body class="bg-[#111827]">
+    
+    <%@ include file="navbar.jsp" %>
+
+    <div>
+        <header class="bg-[#1F2937] shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-white">
+                    Faculty Dashboard
+                </h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 sm:px-0">
+                    <h2 class="text-xl font-semibold text-gray-300 mb-4">System Statistics</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-[#1F2937] rounded-xl shadow-lg p-6">
+                            <h3 class="text-gray-400 text-sm font-medium">Total Students</h3>
+                            <p class="text-white text-3xl font-bold mt-2">${studentCount}</p>
+                        </div>
+
+                        <div class="bg-[#1F2937] rounded-xl shadow-lg p-6">
+                            <h3 class="text-gray-400 text-sm font-medium">Total Questions</h3>
+                            <p class="text-white text-3xl font-bold mt-2">${qnCount}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-4 py-6 sm:px-0">
+                    <h2 class="text-xl font-semibold text-gray-300 mb-4">Faculty Actions</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="AddQuestion" class="bg-[#1F2937] rounded-xl shadow-lg p-6 flex flex-col justify-between hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">
+                            <div>
+                                <h3 class="text-white text-lg font-semibold">Add New Question</h3>
+                                <p class="text-gray-400 mt-2">Create and add a new question to the quiz bank.</p>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-[#8B5CF6] font-bold">Create Question &rarr;</span>
+                            </div>
+                        </a>
+
+                        <a href="AllQuestion" class="bg-[#1F2937] rounded-xl shadow-lg p-6 flex flex-col justify-between hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">
+                            <div>
+                                <h3 class="text-white text-lg font-semibold">Manage Questions</h3>
+                                <p class="text-gray-400 mt-2">View, edit, or delete existing questions.</p>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-[#8B5CF6] font-bold">View All &rarr;</span>
+                            </div>
+                        </a>
+
+                        <a href="AddTech" class="bg-[#1F2937] rounded-xl shadow-lg p-6 flex flex-col justify-between hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">
+                            <div>
+                                <h3 class="text-white text-lg font-semibold">Add Technology</h3>
+                                <p class="text-gray-400 mt-2">Add a new subject category for questions.</p>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-[#8B5CF6] font-bold">Add New &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-</nav>
-<center>
-<h1>Welcome To Faculty DashBoard</h1></center>
 
-
-<!-- cards -->
-
-
-<div class="d-flex justify-content-center align-item-center mt-4 ">
-
-<div class="card text-bg-secondary mb-3 mt-4" style="max-width: 18rem; margin-left: 20px; margin-right: 20px;">
-<!--   <div class="card-header">Header</div>
- -->  <div class="card-body">
-    <h5 class="card-title">All Student</h5>
-    <p class="card-text">${studentCount }<br></p>
-  </div>
-</div>
-
-
-<div class="card text-bg-secondary mb-3 mt-4" style="max-width: 18rem;  margin-left: 20px; margin-right: 20px;">
-  <!-- <div class="card-header">Header</div> -->
-  <div class="card-body">
-    <h5 class="card-title">All Questions</h5>
-    <p class="card-text">${qnCount }</p>
-  </div>
-</div>
-
-<!--
-<div class="card text-bg-secondary mb-3 mt-4" style="max-width: 18rem;  margin-left: 20px; margin-right: 20px;">
-   <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">No Of Technology</h5>
-    <p class="card-text">${tech }</p>
-  </div>
-   -->
-</div>
-</div>
 </body>
 </html>

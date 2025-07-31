@@ -92,11 +92,12 @@ public class FacultyController {
 		return "redirect:AllQuestion";
 	}
 	
-	/*
-	 * @GetMapping("/AddTech") public void addTechnology() {
-	 * 
-	 * }
-	 */
+	
+	@GetMapping("/AddTech")
+	public void addTechnology() {
+
+	}
+	 
 	
 	@GetMapping("/newTech")
 	public String techData(@RequestParam("tech")String tech,Model m)

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class UserDto {
 
-	private RoleDto role_Entity;
+	private RoleDto roleEntity;
 	private String role;
 	private String password;
 	private String email;

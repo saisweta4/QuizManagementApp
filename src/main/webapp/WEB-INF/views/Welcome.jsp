@@ -1,89 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Quiz Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Quiz Management System</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            background-image: url('/image/wel.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .container-box {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 350px;
-            min-height: 300px;
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #f8f9fa;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .btn-custom {
-            width: 220px;
-            font-size: 18px;
-            padding: 10px;
-            border-radius: 30px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .btn-custom:hover {
-            transform: scale(1.05);
-        }
-
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            align-items: center;
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
+<body class="relative">
 
-<body>
-
-    <div class="container-box">
-        <h1>Welcome To Quiz Management</h1>
-        <p>Test your knowledge with our interactive quiz system!</p>
-
-        <div class="btn-container">
-            <a href="login" class="btn btn-primary btn-custom">Login</a>
-            <a href="signUp" class="btn btn-success btn-custom">Student Register</a>
-        </div>
+    <div class="absolute inset-0 z-[-1]">
+        <img src="https://images.unsplash.com/photo-1554176259-aa961fc32671?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFyayUyMG1vdW50YWlufGVufDB8fDB8fHww?q=80&w=2070&auto=format&fit=crop" 
+             class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/70"></div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="flex flex-col items-center justify-center min-h-screen text-center px-4">
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+            Welcome to the
+            <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-transparent bg-clip-text">
+                Quiz Platform
+            </span>
+        </h1>
+        
+        <p class="mt-6 max-w-2xl text-lg md:text-xl text-gray-300">
+            Challenge your knowledge, climb the leaderboards, and become a master in your field.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+            <a href="login" 
+               class="w-full sm:w-auto inline-block px-8 py-3 text-lg font-bold text-white bg-[#6D28D9] rounded-full hover:bg-[#5B21B6] transition-transform duration-300 hover:scale-105">
+                Login
+            </a>
+            <a href="signUp" 
+               class="w-full sm:w-auto inline-block px-8 py-3 text-lg font-bold text-white bg-transparent border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300">
+                Register as Student
+            </a>
+        </div>
+        
+    </div>
 
 </body>
 </html>

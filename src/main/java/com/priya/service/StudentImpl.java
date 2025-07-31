@@ -38,18 +38,18 @@ public class StudentImpl implements StudentIntf {
 		return all;
 	}
 	
-	/*
+	
 	public List<Question> getQuestion(String name)
 	{
 		Integer techId=tRepo.getTechId(name);
 		System.out.println(techId);
 		
 		List<Question> qlist=qRepo.getTech(techId);
-		//System.out.println(qlist);
+		System.out.println(qlist);
 		return qlist;
 	}
 	
-	
+	/*
 	 * public Integer compaire(Map<String, String> selectedAns) { Map<String,String>
 	 * dbAns=new HashMap<>();
 	 * System.out.println(dbAns+"............select from databse"); List<Question>
@@ -72,7 +72,7 @@ public class StudentImpl implements StudentIntf {
 	            Question question = questionOpt.get();
 	            	//System.out.println(question.getCorrect_Opt());
 	            // Compare selected answer with the correct option stored in the database
-	            if (question.getCorrect_Opt().equals(selectedAnswers.get(i))) {
+	            if (question.getCorrectOpt().equals(selectedAnswers.get(i))) {
 	                score++;
 	            }
 	        }
@@ -81,8 +81,9 @@ public class StudentImpl implements StudentIntf {
 	}
 
 	@Override
-	public Integer getTotalQns() {
-		 return qRepo.countQuestion();
+	public Integer getTotalQns(String techName) {
+		//System.out.println(qRepo.countQuestion(techName)+"count questionssss");
+		 return qRepo.countQuestionForTech(techName);
 	}
 	
 
